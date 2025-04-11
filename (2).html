@@ -1,0 +1,105 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cloud PC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      text-align: center;
+      padding: 50px;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: inline-block;
+      min-width: 300px;
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #555;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #0056b3;
+    }
+    .hidden {
+      display: none;
+    }
+    .back-link {
+      display: block;
+      margin-top: 30px;
+      color: #007bff;
+      text-decoration: none;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="homePage">
+    <h1>Welcome to Cloud PC</h1>
+    <p>This is app Cloud PC. But it's not fully a PC.<br>I will upload updates in Cloud PC.</p>
+    <p>Choose a version to view details:</p>
+
+    <button class="btn" onclick="showVersion(10)">View Version 1.0</button>
+    <br><br>
+    <button class="btn" onclick="showVersion(11)">View Version 1.1</button>
+  </div>
+
+  <div class="container hidden" id="versionPage">
+    <div id="versionMessage" style="font-size: 20px; margin-bottom: 20px;"></div>
+    <a class="btn" id="downloadLink" href="#" download>Download</a>
+    <a href="#" class="back-link" onclick="goBack()">← Back to Home</a>
+  </div>
+
+  <script>
+    function showVersion(version) {
+      const homePage = document.getElementById('homePage');
+      const versionPage = document.getElementById('versionPage');
+      const message = document.getElementById('versionMessage');
+      const downloadLink = document.getElementById('downloadLink');
+
+      homePage.classList.add('hidden');
+      versionPage.classList.remove('hidden');
+
+      if (version === 10) {
+        message.textContent = 'This is a file APK version 10';
+        downloadLink.href = 'base.apk';
+        downloadLink.textContent = 'Download Version 1.0';
+      } else if (version === 11) {
+        message.textContent = 'This is a file APK version 11';
+        downloadLink.href = 'clouding PC_1_1.0.apk';
+        downloadLink.textContent = 'Download Version 1.1';
+      } else {
+        message.textContent = 'Invalid version selected.';
+        downloadLink.style.display = 'none';
+      }
+    }
+
+    function goBack() {
+      document.getElementById('versionPage').classList.add('hidden');
+      document.getElementById('homePage').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
